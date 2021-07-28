@@ -89,10 +89,10 @@ def present_in_Box(grid, row, col, num):
     box_size = int(math.sqrt(len(grid)))
     # r = row // box_size * box_size
     # c = col // box_size * box_size
-    r = (row // 3) * 3
-    c = (col // 3) * 3
-    for i in range(3):
-        for j in range(3):
+    r = (row // box_size) * box_size
+    c = (col // box_size) * box_size
+    for i in range(box_size):
+        for j in range(box_size):
             if num == grid[r + i][c + j]:
                 return True
     return False
