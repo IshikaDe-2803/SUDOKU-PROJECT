@@ -16,8 +16,6 @@ def print_grid(grid):
     for i in grid:
         print(i)    
 
-print_grid(empty_grid(number_list))
-
 grid = [[0, 3, 4, 0],
         [4, 0, 0, 2],
         [1, 0 ,0 ,3],
@@ -31,33 +29,16 @@ ANS:
 3214
 '''
 
-#Solving the sudoku
-# def solve_sudoku(grid):
-#     for i in range(len(grid)):
-#         for j in range(len(grid)):
-#             print(i,j, grid[i][j])
-#             if grid[i][j] == 0:
-#                 print(i,j)
-#                 for k in range(1, 5):
-#                     grid[i][j] = k
-#                     if(isValidCell(grid, i, j, k) and solve_sudoku(grid)):
-#                         return True
-#                     grid[i][j] = 0
-#                 return False
-    
-#     return True
-def solve_sudoku(grid):
-    for i in range(len(grid)):
-        for j in range(len(grid)):
-            #print(i, j, grid[i][j])
+def solve_sudoku(grid): #grid
+    length = len(grid)
+    for i in range(length):
+        for j in range(length):
             if grid[i][j] == 0:
-                print(i,j)
-                for k in range(1, 5):
-                    
+                print(i,j)  
+                for k in range(1, length + 1):
                     if (isValidCell(grid, i, j, k)):
-                        grid[i][j] = k
-
- #Unable to apply backtracking algo           
+                        grid[i][j] = k  
+    return grid          
 
 #Checks if the particular number is not present in any row/column/square
 def isValidCell(grid, row, col, num):
@@ -88,8 +69,8 @@ def present_in_Box(grid, row, col, num):
                 return True
     return False
 
-solve_sudoku(grid)
-print_grid(grid)
+print((solve_sudoku(grid)))
+
 
 
 
