@@ -32,18 +32,32 @@ ANS:
 '''
 
 #Solving the sudoku
+# def solve_sudoku(grid):
+#     for i in range(len(grid)):
+#         for j in range(len(grid)):
+#             print(i,j, grid[i][j])
+#             if grid[i][j] == 0:
+#                 print(i,j)
+#                 for k in range(1, 5):
+#                     grid[i][j] = k
+#                     if(isValidCell(grid, i, j, k) and solve_sudoku(grid)):
+#                         return True
+#                     grid[i][j] = 0
+#                 return False
+    
+#     return True
 def solve_sudoku(grid):
     for i in range(len(grid)):
         for j in range(len(grid)):
+            #print(i, j, grid[i][j])
             if grid[i][j] == 0:
+                print(i,j)
                 for k in range(1, 5):
-                    grid[i][j] = k
-                    if(isValidCell(grid, i, j, k) and solve_sudoku(grid)):
-                        return True
-                    grid[i][j] = 0
-                return False
-    
-    return True
+                    
+                    if (isValidCell(grid, i, j, k)):
+                        grid[i][j] = k
+
+ #Unable to apply backtracking algo           
 
 #Checks if the particular number is not present in any row/column/square
 def isValidCell(grid, row, col, num):
