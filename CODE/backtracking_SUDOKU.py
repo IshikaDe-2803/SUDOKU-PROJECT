@@ -1,9 +1,12 @@
 import math
 
-#Printing the grid
+# Printing the grid
+
+
 def print_grid(grid):
     for num in grid:
         print(num)
+
 
 puzzle_easy = [[3, 0, 4, 0],
                [0, 1, 0, 2],
@@ -20,10 +23,20 @@ puzzle_medium = [[5, 3, 0, 0, 7, 0, 0, 0, 0],
                  [0, 0, 0, 4, 1, 9, 0, 0, 5],
                  [0, 0, 0, 0, 8, 0, 0, 7, 9]]
 
-puzzle_hard = []
+puzzle_hard = [[0, 0, 0, 0, 7, 0, 1, 4, 8],
+               [0, 0, 8, 0, 0, 0, 0, 0, 3],
+               [0, 2, 0, 0, 1, 4, 0, 0, 5],
+               [0, 0, 0, 4, 3, 5, 0, 0, 0],
+               [6, 0, 0, 0, 0, 0, 0, 0, 9],
+               [0, 0, 0, 7, 6, 9, 0, 0, 0],
+               [8, 0, 0, 9, 2, 0, 0, 5, 0],
+               [9, 0, 0, 0, 0, 0, 7, 0, 0],
+               [1, 7, 5, 0, 4, 0, 0, 0, 0]]
 
-#Solving the Sudoku
-def solve_sudoku(grid):  
+# Solving the Sudoku
+
+
+def solve_sudoku(grid):  # grid
     length = len(grid)
     for i in range(length):
         for j in range(length):
@@ -31,17 +44,22 @@ def solve_sudoku(grid):
                 for k in range(1, length + 1):
                     if (isValidCell(grid, i, j, k)):
                         grid[i][j] = k
-                        solve_sudoku(grid)
+                        if solve_sudoku(grid):
+                            return True
                         grid[i][j] = 0
-                return
+                return False
     print_grid(grid)
 
 # Checks if the particular number is not present in any row/column/square i.e. checking
 # whether number in cell is valid for sudoku
+
+
 def isValidCell(grid, row, col, num):
     return (not (present_in_Row(grid, row, num)) and not (present_in_Col(grid, col, num)) and not (present_in_Box(grid, row, col, num)))
 
 # Checks whether number is present in the specified row
+
+
 def present_in_Row(grid, row, num):
     for col in range(len(grid)):
         if num == grid[row][col]:
@@ -49,6 +67,8 @@ def present_in_Row(grid, row, num):
     return False
 
 # Checks whether number is present in the specified column
+
+
 def present_in_Col(grid, col, num):
     for row in range(len(grid)):
         if num == grid[row][col]:
@@ -56,6 +76,8 @@ def present_in_Col(grid, col, num):
     return False
 
 # Checks whether number is present in the specified block/box
+
+
 def present_in_Box(grid, row, col, num):
     box_size = int(math.sqrt(len(grid)))
     r = (row // box_size) * box_size
@@ -66,6 +88,10 @@ def present_in_Box(grid, row, col, num):
                 return True
     return False
 
-#Printing solved puzzles
+
+# Printing solved puzzles
 solve_sudoku(puzzle_easy)
+print()
 solve_sudoku(puzzle_medium)
+print()
+solve_sudoku(puzzle_hard)

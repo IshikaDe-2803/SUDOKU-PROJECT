@@ -53,9 +53,10 @@ def solve_sudoku(grid):  # grid
                 for k in range(1, length + 1):
                     if (isValidCell(grid, i, j, k)):
                         grid[i][j] = k
-                        solve_sudoku(grid)
+                        if solve_sudoku(grid):
+                            return True
                         grid[i][j] = 0
-                return
+                return False
     print_grid(grid)
 
 # Checks if the particular number is not present in any row/column/square
@@ -98,4 +99,4 @@ def present_in_Box(grid, row, col, num):
     return False
 
 
-solve_sudoku(puzzle)
+print(solve_sudoku(puzzle))
