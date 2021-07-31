@@ -86,7 +86,7 @@ puzzle_hard = [[0, 0, 0, 0, 7, 0, 1, 4, 8],
                [1, 7, 5, 0, 4, 0, 0, 0, 0]]
 # print_grid(empty_grid)
 # print("\n")
-(generate_sudoku(puzzle_hard))
+# (generate_sudoku(puzzle_hard))
 (generate_sudoku(empty_grid))
 
 
