@@ -1,4 +1,5 @@
 
+from itertools import count
 import random
 import math
 
@@ -42,10 +43,17 @@ def generate_sudoku(grid):
                     grid[row][col] = 0
             return False
     print_grid(grid)
+    print()
+    remove_numbers(grid)
+    return True
+
+
+index_list = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 
 def remove_numbers(grid):
-    pass
+
+    print_grid(grid)
 
 
 def isValidCell(grid, row, col, num):
