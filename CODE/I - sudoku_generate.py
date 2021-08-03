@@ -19,7 +19,8 @@ def generate_sudoku(grid):  # grid
             #Checking for an empty cell
             if grid[i][j] == 0:
                 #Traversing through nos. 1-9 to check which number is the possible assignment to a cell
-                for k in range(1, length + 1):
+                random.shuffle(num_list)
+                for k in num_list:
                     #Checking validity of the cell
                     if (isValidCell(grid, i, j, k)):
                         #initial assignment
@@ -86,7 +87,7 @@ puzzle_hard = [[0, 0, 0, 0, 7, 0, 1, 4, 8],
                [1, 7, 5, 0, 4, 0, 0, 0, 0]]
 # print_grid(empty_grid)
 # print("\n")
-(generate_sudoku(puzzle_hard))
+# (generate_sudoku(puzzle_hard))
 (generate_sudoku(empty_grid))
 
 
