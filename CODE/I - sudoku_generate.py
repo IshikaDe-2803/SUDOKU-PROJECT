@@ -56,6 +56,7 @@ def isValidCell(grid, row, col, num):
     return (not (present_in_Row(grid, row, num)) and not (present_in_Col(grid, col, num)) and not (present_in_Box(grid, row, col, num)))
 
 # Checks whether number is present in the specified row
+#
 
 
 def present_in_Row(grid, row, num):
