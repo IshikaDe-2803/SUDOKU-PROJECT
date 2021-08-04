@@ -2,21 +2,15 @@
 using namespace std;
 
 const int N = 9;
-int empty_grid[9][9] = {{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
-
-int num_list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-int myRandomGenerator(int j) {
-   return rand() % j;
-}
+int puzzle[9][9] = {{ 8, 0, 0, 0, 0, 0, 0, 0, 0 },
+						{ 0, 0, 3, 6, 0, 0, 0, 0, 0 },
+						{ 0, 7, 0, 0, 9, 0, 2, 0, 0 },
+						{ 0, 5, 0, 0, 0, 7, 0, 0, 0 },
+						{ 0, 0, 0, 0, 4, 5, 7, 0, 0 },
+						{ 0, 0, 0, 1, 0, 0, 0, 3, 0 },
+						{ 0, 0, 1, 0, 0, 0, 0, 6, 8 },
+						{ 0, 0, 8, 5, 0, 0, 0, 1, 0 },
+						{ 0, 9, 0, 0, 0, 0, 4, 0, 0 }};
 
 void print_grid(int arr[N][N])
 {
@@ -27,6 +21,8 @@ void print_grid(int arr[N][N])
         cout << endl;
     }
 }
+
+
 
 bool present_in_Row(int grid[N][N], int row, int num) {
     for (int col = 0; col < N; col++) {
@@ -64,18 +60,17 @@ bool isValidCell(int grid[N][N], int row, int col, int num) {
     return (!(present_in_Row(grid, row, num)) && !(present_in_Col(grid, col, num)) && !(present_in_Box(grid, row, col, num)));
 }
 
-bool generate_sudoku(int grid[N][N], int num_list[N]) {
-    for (int i =0; i < N; i++) {
+bool solve_sudoku(int grid[N][N]) {
+    for (int i = 0; i < N; i++) {
         for (int j =0; j < N; j++) {
             if (grid[i][j] == 0) {
-                random_shuffle(num_list, num_list + N);
-                for (int value = 1; value <= N; value++) {
-                    if (isValidCell(grid, i, j, value)) {
-                        grid[i][j] = value;
-                        if (generate_sudoku(grid, num_list)) {
+                for (int k = 1; k < N + 1; k++) {
+                    if (isValidCell(grid, i,j, k)) {
+                        grid[i][j] = k;
+                        if (solve_sudoku(grid)){
                             return true;
                         }
-                        grid[i][j] = 0;
+                        grid[i][j]=0;
                     }
                 }
                 return false;
@@ -86,8 +81,9 @@ bool generate_sudoku(int grid[N][N], int num_list[N]) {
     return true;
 }
 
+
 int main() {
-    generate_sudoku(empty_grid, num_list);
-    generate_sudoku(empty_grid, num_list);
+    
+    solve_sudoku(puzzle);
     return 0;
 }
