@@ -2,6 +2,10 @@
 using namespace std;
 
 const int N = 9;
+// int puzzle[][4] = {{3, 0, 4, 0},
+//                {0, 1, 0, 2},
+//                {0, 4, 0, 3},
+//                {2, 0, 1, 0}};
 int empty_grid[9][9] = {{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -14,9 +18,6 @@ int empty_grid[9][9] = {{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 
 int num_list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-int myRandomGenerator(int j) {
-   return rand() % j;
-}
 
 void print_grid(int arr[N][N])
 {
@@ -69,9 +70,9 @@ bool generate_sudoku(int grid[N][N], int num_list[N]) {
         for (int j =0; j < N; j++) {
             if (grid[i][j] == 0) {
                 random_shuffle(num_list, num_list + N);
-                for (int value = 1; value <= N; value++) {
+                for (int value = 0; value < N; value++) {
                     if (isValidCell(grid, i, j, value)) {
-                        grid[i][j] = value;
+                        grid[i][j] =  num_list[value];
                         if (generate_sudoku(grid, num_list)) {
                             return true;
                         }
@@ -87,7 +88,6 @@ bool generate_sudoku(int grid[N][N], int num_list[N]) {
 }
 
 int main() {
-    generate_sudoku(empty_grid, num_list);
     generate_sudoku(empty_grid, num_list);
     return 0;
 }
