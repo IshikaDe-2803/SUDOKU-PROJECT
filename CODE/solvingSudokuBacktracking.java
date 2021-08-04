@@ -1,6 +1,7 @@
 import java.util.*;
 
-public class generatingSudokuBacktracking{
+public class solvingSudokuBacktracking{
+
 	public static void printSudoku(int[][] grid){
 		for (int row = 0; row < grid.length; row++){
 			for (int col = 0; col < grid.length; col++){
@@ -87,3 +88,4 @@ public class generatingSudokuBacktracking{
 		solveSudoku(grid);
 	}
 }
+
