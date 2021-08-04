@@ -33,7 +33,6 @@ puzzle_hard = [[0, 0, 0, 0, 7, 0, 1, 4, 8],
                [9, 0, 0, 0, 0, 0, 7, 0, 0],
                [1, 7, 5, 0, 4, 0, 0, 0, 0]]
 
-
 # Solving the Sudoku
 
 
@@ -96,3 +95,4 @@ print()
 solve_sudoku(puzzle_medium)
 print()
 solve_sudoku(puzzle_hard)
+print()

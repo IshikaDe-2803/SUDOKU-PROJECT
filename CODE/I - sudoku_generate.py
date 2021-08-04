@@ -5,41 +5,51 @@ import math
 empty_grid = [[0 for i in range(9)] for j in range(9)]
 num_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+
 def print_grid(grid):
     for row in grid:
         print(row)
 
+
 def generate_sudoku(grid):  # grid
-    #length is the length of each row/column
+    # length is the length of each row/column
     length = len(grid)
-    #traversing through rows
+    # traversing through rows
     for i in range(0, length):
-        #traversing through columns
+        # traversing through columns
         for j in range(0, length):
-            #Checking for an empty cell
+            # Checking for an empty cell
             if grid[i][j] == 0:
-                #Traversing through nos. 1-9 to check which number is the possible assignment to a cell
+                # Traversing through nos. 1-9 to check which number is the possible assignment to a cell
                 random.shuffle(num_list)
                 for k in num_list:
-                    #Checking validity of the cell
+                    # Checking validity of the cell
                     if (isValidCell(grid, i, j, k)):
-                        #initial assignment
+                        # initial assignment
                         grid[i][j] = k
-                        #if correct solution
+                        # if correct solution
                         if generate_sudoku(grid):
                             return True
-                        #backtracks here
+                        # backtracks here
                         grid[i][j] = 0
                 return False
+
+    remove_numbers(grid, 64)
     print_grid(grid)
-    #The last true ensures that only one solution is displayed and the recursion stops when the solution is found.
+    # The last true ensures that only one solution is displayed and the recursion stops when the solution is found.
     return True
 
-    ##NOTE: Am still confused as to when we get the correct solution how does the functions stop the recursion!
-    
-    
-def remove_numbers(grid):
-    pass
+    # NOTE: Am still confused as to when we get the correct solution how does the functions stop the recursion!
+
+
+def remove_numbers(grid, count):
+    while (count != 0):
+        i = random.randint(0, 8)
+        j = random.randint(0, 8)
+        if (grid[i][j] != 0):
+            count -= 1
+            grid[i][j] = 0
+    return grid
 
 
 def isValidCell(grid, row, col, num):
@@ -76,6 +86,7 @@ def present_in_Box(grid, row, col, num):
                 return True
     return False
 
+
 puzzle_hard = [[0, 0, 0, 0, 7, 0, 1, 4, 8],
                [0, 0, 8, 0, 0, 0, 0, 0, 3],
                [0, 2, 0, 0, 1, 4, 0, 0, 5],
@@ -89,5 +100,3 @@ puzzle_hard = [[0, 0, 0, 0, 7, 0, 1, 4, 8],
 # print("\n")
 # (generate_sudoku(puzzle_hard))
 (generate_sudoku(empty_grid))
-
-
