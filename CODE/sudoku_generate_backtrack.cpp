@@ -69,6 +69,7 @@ bool generate_sudoku(int grid[N][N], int num_list[N]) {
     for (int i =0; i < N; i++) {
         for (int j =0; j < N; j++) {
             if (grid[i][j] == 0) {
+                srand (time(NULL));
                 random_shuffle(num_list, num_list + N);
                 for (int value = 0; value < N; value++) {
                     if (isValidCell(grid, i, j, num_list[value])) {
