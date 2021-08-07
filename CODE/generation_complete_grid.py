@@ -1,4 +1,5 @@
 import math
+import random
 from random import shuffle, randint
 
 empty_grid = [[0 for i in range(9)] for j in range(9)]
@@ -8,21 +9,39 @@ def print_grid(grid):
     for row in grid:
         print(row)
 
-def generate_sudoku(grid):  
+def generate_sudoku(grid):  # grid
+    #length is the length of each row/column
     length = len(grid)
-    for i in range(length):
-        for j in range(length):
+    #traversing through rows
+    for i in range(0, length):
+        #traversing through columns
+        for j in range(0, length):
+            #Checking for an empty cell
             if grid[i][j] == 0:
-                shuffle(num_list)
-                for value in num_list:
-                    if (isValidCell(grid, i, j, value)):
-                        grid[i][j] = value
+                # Traversing through nos. 1-9 to check which number is the possible assignment to a cell
+                random.shuffle(num_list)
+                for k in num_list:
+                    # Checking validity of the cell
+                    if (isValidCell(grid, i, j, k)):
+                       # initial assignment
+                        grid[i][j] = k
+                        # if correct solution
                         if generate_sudoku(grid):
                             return True
+                        # backtracks here
                         grid[i][j] = 0
                 return False
+    remove_numbers(grid, 64)
+    return True
 
-    return True    
+def remove_numbers(grid, count):
+    while (count != 0):
+        i = random.randint(0, 8)
+        j = random.randint(0, 8)
+        if (grid[i][j] != 0):
+            count -= 1
+            grid[i][j] = 0
+    return grid
 
 def isValidCell(grid, row, col, num):
     return (not (present_in_Row(grid, row, num)) and not (present_in_Col(grid, col, num)) and not (present_in_Box(grid, row, col, num)))
@@ -64,3 +83,4 @@ def solve_sudoku(grid):  # grid
 
 generate_sudoku(empty_grid)
 print_grid(empty_grid)
+
