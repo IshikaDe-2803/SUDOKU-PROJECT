@@ -2,10 +2,7 @@
 using namespace std;
 
 const int N = 9;
-// int puzzle[][4] = {{3, 0, 4, 0},
-//                {0, 1, 0, 2},
-//                {0, 4, 0, 3},
-//                {2, 0, 1, 0}};
+
 int empty_grid[9][9] = {{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -17,7 +14,6 @@ int empty_grid[9][9] = {{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
 
 int num_list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-
 
 void print_grid(int arr[N][N])
 {
@@ -84,11 +80,11 @@ bool generate_sudoku(int grid[N][N], int num_list[N]) {
             }
         }
     }
-    print_grid(grid);
     return true;
 }
 
 int main() {
     generate_sudoku(empty_grid, num_list);
+    print_grid(empty_grid);
     return 0;
 }

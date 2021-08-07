@@ -2,7 +2,7 @@
 using namespace std;
 
 const int N = 9;
-int puzzle[9][9] = {{ 8, 0, 0, 0, 0, 0, 0, 0, 0 },
+int puzzle[9][9] = {    { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
 						{ 0, 0, 3, 6, 0, 0, 0, 0, 0 },
 						{ 0, 7, 0, 0, 9, 0, 2, 0, 0 },
 						{ 0, 5, 0, 0, 0, 7, 0, 0, 0 },
@@ -21,8 +21,6 @@ void print_grid(int arr[N][N])
         cout << endl;
     }
 }
-
-
 
 bool present_in_Row(int grid[N][N], int row, int num) {
     for (int col = 0; col < N; col++) {
@@ -77,13 +75,11 @@ bool solve_sudoku(int grid[N][N]) {
             }
         }
     }
-    print_grid(grid);
     return true;
 }
 
-
 int main() {
-    
     solve_sudoku(puzzle);
+    print_grid(puzzle);
     return 0;
 }
