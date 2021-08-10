@@ -62,12 +62,13 @@ def check_same_block(row, col):
 def string_to_grid(str_solved_sudoku):
     solved_sudoku = []
     row = []
-    for i in range(len(str_solved_sudoku)):
+    for i in range(len(str_solved_sudoku) + 1):
         if i % 9 == 0 and i != 0:
             solved_sudoku.append(row)
+            if len(solved_sudoku) == 9:
+                return solved_sudoku
             row = []
         row.append(int(str_solved_sudoku[i]))
-    return solved_sudoku
 
 
 def print_sudoku(grid):
@@ -75,6 +76,10 @@ def print_sudoku(grid):
         print(row)
 
 
-solve_sudoku(grid_to_string((puzzle_medium)))
+solve_sudoku(grid_to_string(puzzle_medium))
 print()
-solve_sudoku(grid_to_string((puzzle_hard)))
+solve_sudoku(grid_to_string(puzzle_hard))
+
+zero = [[0] * 9] * 9
+print()
+solve_sudoku(grid_to_string(zero))
