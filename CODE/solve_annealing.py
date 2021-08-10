@@ -45,7 +45,7 @@ PART 1
 --6. fill the grid using that rule--
 --7. repeat this until sudoku is filled--
 PART 2
-8. Calculate the cost of rows and columns
+--8. Calculate the cost of rows and columns--
 PART 3
 9. swapping random cells
 PART 4
