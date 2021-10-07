@@ -79,7 +79,3 @@ def print_sudoku(grid):
 solve_sudoku(grid_to_string(puzzle_medium))
 print()
 solve_sudoku(grid_to_string(puzzle_hard))
-
-zero = [[0] * 9] * 9
-print()
-solve_sudoku(grid_to_string(zero))

@@ -1,42 +1,12 @@
 import math
 import time
 # Printing the grid
+from generating_grid import sudoku_puzzle
 
 
 def print_grid(grid):
     for num in grid:
         print(num)
-
-
-puzzle_easy = [[3, 0, 4, 0],
-               [0, 1, 0, 2],
-               [0, 4, 0, 3],
-               [2, 0, 1, 0]]
-
-puzzle_try = [[7, 8, 1, 0, 0, 6, 5, 4, 0], [0, 9, 0, 0, 0, 5, 3, 0, 0], [0, 0, 4, 9, 8, 1, 0, 0, 7], [6, 4, 7, 0, 0, 3, 0, 0, 1],
-              [8, 3, 0, 4, 1, 0, 0, 5, 6], [5, 1, 2, 0, 0, 7, 0, 0, 4], [0, 7, 0, 3, 0, 8, 4, 0, 0], [0, 6, 0, 0, 0, 9, 0, 0, 0], [0, 0, 3, 1, 0, 0, 6, 0, 0]]
-
-puzzle_medium = [[5, 3, 0, 0, 7, 0, 0, 0, 0],
-                 [6, 0, 0, 1, 9, 5, 0, 0, 0],
-                 [0, 9, 8, 0, 0, 0, 0, 6, 0],
-                 [8, 0, 0, 0, 6, 0, 0, 0, 3],
-                 [4, 0, 0, 8, 0, 3, 0, 0, 1],
-                 [7, 0, 0, 0, 2, 0, 0, 0, 6],
-                 [0, 6, 0, 0, 0, 0, 2, 8, 0],
-                 [0, 0, 0, 4, 1, 9, 0, 0, 5],
-                 [0, 0, 0, 0, 8, 0, 0, 7, 9]]
-
-puzzle_hard = [[0, 0, 0, 0, 7, 0, 1, 4, 8],
-               [0, 0, 8, 0, 0, 0, 0, 0, 3],
-               [0, 2, 0, 0, 1, 4, 0, 0, 5],
-               [0, 0, 0, 4, 3, 5, 0, 0, 0],
-               [6, 0, 0, 0, 0, 0, 0, 0, 9],
-               [0, 0, 0, 7, 6, 9, 0, 0, 0],
-               [8, 0, 0, 9, 2, 0, 0, 5, 0],
-               [9, 0, 0, 0, 0, 0, 7, 0, 0],
-               [1, 7, 5, 0, 4, 0, 0, 0, 0]]
-
-# Solving the Sudoku
 
 
 def solve_sudoku(grid):  # grid
@@ -95,8 +65,10 @@ def present_in_Box(grid, row, col, num):
 # Printing solved puzzles
 
 def main():
+    print_grid(sudoku_puzzle)
     t1 = time.time()
-    solve_sudoku(puzzle_try)
+    print()
+    solve_sudoku(sudoku_puzzle)
     t2 = time.time()
     print(t2 - t1, "seconds")
 
