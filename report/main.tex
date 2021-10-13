@@ -1,8 +1,13 @@
-\documentclass{article}
+\documentclass[12pt]{article}
+\usepackage{graphicx}
 \usepackage{hyperref}
-\title{The Sudoku Project}
+\usepackage{url}
+\usepackage[margin=0.8in]{geometry}
+\setlength{\headheight}{0pt}
+
+\title {\textbf{The Sudoku Project}}
 \author{Ishika De and Yashvi Donga}
-\date{}
+\date{October, 2021}
 
 \begin{document}
     \maketitle
@@ -15,39 +20,68 @@
     image and solve it.
     \section{Toolchain}
     \begin{itemize}
-        \item Languages: Python, C++, Java.
+        \item Languages used: Python, C++, Java.
         \item Libraries used in Python: Numpy, OpenCV and Keras.
     \end{itemize}
     \section{Challenges}
     \section{Learnings}
-     We learnt to:
+    Through this project we wanted to explore different concepts of programming. In addition to this, we also wanted to learn about neural networks and image processing.\\
+    By the end of this project we have learnt to:
      \begin{itemize}
-		 \item Collaborate using GitLab.
-		 \item Write the same algorithm in different languages.
-		 \item Generate data in one language and use the data in another language.
-		 \item Explain our code, thought processess and ideas to each other.
-		 \item Apply the concept of cost function and thermodynamics in simulated annealing.
-		 \item Generate 100 sudokus of 3 different difficulty levels.
-		 \item Process an image to extract digits of a sudoku.
-		 \item Implement neural networks to predict digits of a sudoku from an image.
+		 \item \textbf{Collaborate using GitLab}\\
+		 For this project we chose to use git as our version control tool. It made collaboration easier as we worked on this project remotely. 
+		 \item \textbf{Write the same algorithm in different languages}\\
+		 We explored the concepts of backtracking and brute force algorithm and implemented these in different languages. We learn to translate code from one language to another and learnt the pros and cons of each of the languages used. 
+		 \item \textbf{Explain our code, thought processes and ideas to each other}\\
+		 Initially, communicating our ideas during the ideation of the project was challenging, but, through this project we learnt to explain our codes and ideas to each other efficiently.
+		 \item \textbf{Apply the concept of cost function and thermodynamics in simulated annealing}\\
+		 Simulated annealing algorithm was an eye opener as it required us to understand concepts of physics - thermodynamics.  The algorithm has an analogy with thermodynamics, specifically with the way that metals cool and anneal.  Simulated annealing uses the objective function of an optimization problem instead of the energy of a material.
+		 \item \textbf{Process an image to extract digits of a sudoku}\\
+		 Image processing was an concept that interested us. We employed the openCV library in python to read a sudoku from an image and subsequently solve it,
+		 \item \textbf{Implement neural networks to predict digits of a sudoku from an image}\\
+		 To identify the digits from an image we used the MNIST dataset to train the neural network. We learnt how images are fed to a system to capture patterns, in this case, to identify numbers from 1 - 9.
+		 \item \textbf{Importance of changeability of code}\\
+		 We were able to generate 3 different levels of sudoku just by changing the user input. We generated sudoku puzzles of 3 different difficulties - easy, medium and hard in the three different languages.
 	 \end{itemize}
+	 
     \section{Results and Conclusion}
-     
+    We tested 100 sudoku puzzles in each language for each of the algorithms. The results for the latter are as follows:\\
+          \begin{figure}[htp]
+    		  \includegraphics[width=0.9\textwidth]{./week9_img/data.png}
+    		  \centering
+    		  \caption{Average time taken to solve a sudoku (tested 100 puzzles).}
+    		  \centering
+		  \end{figure}
+	\\As seen in the table above, backtracking algorithm was visibly faster than the brute force algorithm in all the languages. While Brute-force tries every single possibility, back-tracking follow some path and goes back to previous intersection if it’s a dead-end. This is the reason why backtracking was was much more time-efficient.\\
+	Considering the languages, C++ took the least amount of time to solve the sudoku and python clearly was the slowest to solve the puzzles, especially puzzles of higher difficulty.\\
+	Below is a snapshot of the solved sudoku that was read from an image.\\
+	\begin{figure}[htp]
+		  \includegraphics[width=0.9\textwidth]{./week9_img/transformation.png}
+		  \centering
+		  \caption{Image processing of a sudoku puzzle image.}
+		  \centering
+		  \end{figure}
+	\begin{figure}[htp]
+			  \includegraphics[width=0.8\textwidth]{./week9_img/solve.PNG}
+			  \centering
+		  \caption{Solved the sudoku from the image}
+		  \centering
+		  \end{figure}\\
     \section{Code Repository} 
     Our code repository link: \href{https://gitlab.com/yashvidonga29/sudoku-project-we}{\emph{https://gitlab.com/yashvidonga29/sudoku-project-we}}
     \section{References}   
     \begin{itemize}
-        \item \nolinkurl{http://people.uncw.edu/tagliarinig/Courses/380/F2015%20papers%20and%20presentations/F2015%20papers%20and%20presentations/Sudoku/Sudoku.pdf}
-        \item \nolinkurl{https://towardsdatascience.com/solving-sudoku-with-ai-d6008993c7de}
-        \item \nolinkurl{http://zhangroup.aporc.org/images/files/Paper_3485.pdf}
-        \item \nolinkurl{https://www.sudokuwiki.org/Brute_Force_vs_Logical_Strategies}
-        \item \nolinkurl{https://stacks.stanford.edu/file/druid:my512gb2187/Agarwal_Kamat_Kurian_Smart_Sudoku_Solver.pdf}
-        \item \nolinkurl{https://blogs.mathworks.com/deep-learning/2018/11/15/sudoku-solver-image-processing-and-deep-learning/}
-        \item \nolinkurl{https://www.researchgate.net/publication/264572573_Sudoku_Puzzle_Complexity}
-        \item \nolinkurl{https://www.youtube.com/watch?v=FyyVbuLZav8}
-        \item \nolinkurl{https://www.adrian.idv.hk/2019-01-30-simanneal/}
-        \item \nolinkurl{https://link.springer.com/article/10.1007/s10732-007-9012-8}
-        \item \nolinkurl{https://docs.opencv.org/4.5.2/d0/de3/tutorial_py_intro.html}
-        \item \nolinkurl{https://www.youtube.com/watch?v=aircAruvnKk}
+         \item \sloppy \url{http://people.uncw.edu/tagliarinig/Courses/380/F2015%20papers%20and%20presentations/F2015%20papers%20and%20presentations/Sudoku/Sudoku.pdf}
+        \item \sloppy \url{https://towardsdatascience.com/solving-sudoku-with-ai-d6008993c7de}
+        \item \sloppy \url{http://zhangroup.aporc.org/images/files/Paper_3485.pdf}
+        \item \sloppy \url{https://www.sudokuwiki.org/Brute_Force_vs_Logical_Strategies}
+        \item \sloppy \url{https://stacks.stanford.edu/file/druid:my512gb2187/Agarwal_Kamat_Kurian_Smart_Sudoku_Solver.pdf}
+        \item \sloppy \url{https://blogs.mathworks.com/deep-learning/2018/11/15/sudoku-solver-image_processing-and-deep-learning}
+        \item \sloppy \url{https://www.researchgate.net/publication/264572573_Sudoku_Puzzle_Complexity}
+        \item \sloppy \url{https://www.youtube.com/watch?v=FyyVbuLZav8}
+        \item \sloppy \url{https://www.adrian.idv.hk/2019-01-30-simanneal/}
+        \item \sloppy \url{https://link.springer.com/article/10.1007/s10732-007-9012-8}
+        \item \sloppy \url{https://docs.opencv.org/4.5.2/d0/de3/tutorial_py_intro.html}
+        \item \sloppy \url{https://www.youtube.com/watch?v=aircAruvnKk}
     \end{itemize}
 \end{document}
