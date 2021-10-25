@@ -46,5 +46,7 @@ def create_CNN_model():
                   optimizer='adam', metrics=['accuracy'])
     X_test, Y_test, X_train, Y_train = preprocess_training_data()
     model.fit(X_train, Y_train, validation_data=(
-        X_test, Y_test), epochs=10, batch_size=200)
-    model.save("model1.h5")
+        X_test, Y_test), epochs=20, batch_size=200)
+    model.save("model2.h5")
+
+create_CNN_model()

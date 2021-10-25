@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import operator
 import numpy as np
-IMAGE_URL = "./sudoku_1.jpg"
+IMAGE_URL = "./sudoku_3.png"
 SUDOKU_SIZE = 9
 
 

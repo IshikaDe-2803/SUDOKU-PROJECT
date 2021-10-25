@@ -3,11 +3,9 @@ import time
 # Printing the grid
 from generating_grid import sudoku_puzzle
 
-
 def print_grid(grid):
     for num in grid:
         print(num)
-
 
 def solve_sudoku(grid):  # grid
     length = len(grid)
@@ -65,12 +63,15 @@ def present_in_Box(grid, row, col, num):
 # Printing solved puzzles
 
 def main():
+    print("Image has been read.")
+    print("Sudoku puzzle:")
     print_grid(sudoku_puzzle)
     t1 = time.time()
     print()
+    print("Solved sudoku:")
     solve_sudoku(sudoku_puzzle)
+    print()
     t2 = time.time()
-    print(t2 - t1, "seconds")
-
-
+    print()
+    print("Time taken: ", t2 - t1, "seconds")
 main()

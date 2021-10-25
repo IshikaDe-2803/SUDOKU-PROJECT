@@ -34,7 +34,7 @@ def create_image_grid(img):
     for i in range(9):
         for j in range(9):
             finalgrid[i][j] = np.array(finalgrid[i][j])
-    display_img(finalgrid[0][4])
+    #display_img(finalgrid[0][4])
     return finalgrid
 
 
@@ -43,7 +43,7 @@ def predict(cell_img):
     cell_img = cell_img.astype('float32')
     cell_img = cell_img.reshape(1, 28, 28, 1)
     cell_img /= 255
-    model = load_model('model1.h5')
+    model = load_model('model.h5')
     pred = model.predict(cell_img.reshape(1, 28, 28, 1), batch_size=1)
     return pred.argmax()
 
